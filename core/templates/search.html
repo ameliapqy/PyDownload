@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <meta charset="utf-8" />
+
+  <title>PyDownloader</title>
+  <meta name="description" content="Twitter Clone" />
+  <meta name="author" content="PQY" />
+  {% load static %}
+
+  <link rel="stylesheet" type="text/css" href="{% static 'all.css' %}">
+</head>
+
+<body>
+
+<div class="jumbotron text-center mx-auto bg-transparent" style="width: 70%">
+  <h1 class="display-4">PyDownloader</h1>
+  <p class="lead">A simple downloader to download any youtube videos you want.</p>
+  <hr class="my-4">
+  <form class = "form-group">
+    <div class="row">
+      <div class = "input-group input-group-lg">
+        <input class="form-control form-control-lg" type="search" placeholder="Search" aria-label="Search">
+    
+          <div class = "input-group-btn">
+            <button class="btn-lg btn-primary mx-3" type="submit">Search</button>
+          </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div id="particles-js"></div>
+
+<script src="particles.js"></script>
+
+</body>
+
+</html>
