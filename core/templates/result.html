@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <meta charset="utf-8" />
+
+  <title>result</title>
+  <meta name="description" content="Twitter Clone" />
+  <meta name="author" content="PQY" />
+  {% load static %}
+
+  <link rel="stylesheet" type="text/css" href="{% static 'all.css' %}">
+</head>
+
+<body>
+
+<div class="jumbotron text-center mx-auto bg-transparent" style="width: 70%">
+  <h1 class="display-4">Result</h1>
+  <p class="lead">From search query: <em>{{query}}</em></p>
+  <hr class="my-4">
+          <div class = "input-group-btn">
+           <a href="/search/"> <button class="btn btn-primary mx-3" type="submit" >Back</button></a>
+          </div>
+  </form>
+</div>
+</body>
+
+</html>

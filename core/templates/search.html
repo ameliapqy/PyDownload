@@ -21,11 +21,11 @@
   <h1 class="display-4">PyDownloader</h1>
   <p class="lead">A simple downloader to download any youtube videos you want.</p>
   <hr class="my-4">
-  <form class = "form-group">
+  <form class = "form-group" method="POST" action="/result/">
+     {% csrf_token %}
     <div class="row">
       <div class = "input-group input-group-lg">
-        <input class="form-control form-control-lg" type="search" placeholder="Search" aria-label="Search">
-    
+        <input class="form-control form-control-lg" type="search" name="query" placeholder="Search" aria-label="Search">
           <div class = "input-group-btn">
             <button class="btn-lg btn-primary mx-3" type="submit">Search</button>
           </div>
@@ -34,10 +34,14 @@
   </form>
 </div>
 
-<div id="particles-js"></div>
-
-<script src="particles.js"></script>
-
+    <div id="particles-js"></div>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS.load('particles-js', '{%static 'particles.json'%}',
+        function(){
+            console.log('particles.json loaded...')
+        })
+    </script>
 </body>
 
 </html>
