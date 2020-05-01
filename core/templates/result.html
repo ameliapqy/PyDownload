@@ -15,17 +15,31 @@
   <link rel="stylesheet" type="text/css" href="{% static 'all.css' %}">
 </head>
 
-<body>
+<body class="particle">
 
 <div class="jumbotron text-center mx-auto bg-transparent" style="width: 70%">
   <h1 class="display-4">Result</h1>
-  <p class="lead">From search query: <em>{{query}}</em></p>
+  <p class="lead">From search query: <em>{{query}}</em></p><a href="/search/"> <button class="btn btn-outline-danger mx-3" type="submit" >Back</button></a>
   <hr class="my-4">
-          <div class = "input-group-btn">
-           <a href="/search/"> <button class="btn btn-primary mx-3" type="submit" >Back</button></a>
-          </div>
-  </form>
 </div>
-</body>
+{% for video in data %}
+<div class="card mb-5 mx-auto" style="width: 70%; opacity: 90%">
+  <div class="row card-block">
+    <div class="col" style="text-align:center"> 
+      <img class="card-img" src={{video.thumbnail}} alt="Card image cap">
+    </div>
+    <div class="col mx-auto"> 
+      <h5 class="card-title mt-3">{{video.title}}</h5>
+      <br>
+      <h6></h6>
+      <a href="#" class="btn btn-danger btn-bottom">Download</a>
+    </div>
+  </div>
+</div>
+{% endfor %}
 
+
+
+
+</body>
 </html>

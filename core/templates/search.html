@@ -13,10 +13,9 @@
   {% load static %}
 
   <link rel="stylesheet" type="text/css" href="{% static 'all.css' %}">
-   <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
-</head>
+ </head>
 
-<body>
+<body class="white">
 
 <div class="jumbotron text-center mx-auto bg-transparent my-5" style="width: 70%">
   <h1 class="display-4">PyDownloader</h1>
@@ -28,23 +27,13 @@
       <div class = "input-group input-group-lg">
         <input class="form-control form-control-lg" type="search" name="query" placeholder="Search" aria-label="Search">
           <div class = "input-group-btn">
-            <button class="btn-lg btn-primary mx-3" type="submit">Search</button>
+            <button class="btn-lg btn-danger mx-3" type="submit">Search</button>
           </div>
       </div>
     </div>
   </form>
 </div>
 
-    <div id="particles-js"></div>
-    <div class="count-particles"> <span class="js-count-particles">--</span> particles </div> 
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
-    <script>
-        particlesJS.load('particles-js', {{particles}},
-        function(){
-            console.log('particles.json loaded...')
-        })
-    </script>
     
 </body>
 

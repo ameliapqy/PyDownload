@@ -70,6 +70,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'PyDownloader.wsgi.application'
 
+YOUTUBE_API_KEY = 'AIzaSyCyUsJyxmM7bTs_ybwkYUbuUOs69tPytU8'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases

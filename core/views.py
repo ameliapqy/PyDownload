@@ -1,14 +1,32 @@
 from django.shortcuts import render, redirect
-import json
-from core.static import particles.json
+from django.conf import settings
+import json, requests
 # Create your views here.
 def search(request):
-    return render(request, "search.html", {"particles": particles.json});
+    return render(request, "search.html", {"query":""})
 
 def result(request):
-    query = {}
-    if request.POST["query"]:
-        query = request.POST["query"]
-    else:
-        query = "N/A"
-    return render(request, "result.html", {"query":query});
+    if "query" not in request.POST:
+        return render(request, "result.html", {"query":"N/A", "data": []})
+        
+    query = request.POST["query"]
+
+    search_url = 'https://www.googleapis.com/youtube/v3/search'
+    search_params = {
+        'part': 'snippet',
+        'q': query,
+        'key': settings.YOUTUBE_API_KEY,
+        'maxResults' : 9,
+        'type': 'video'
+    }
+    all_data = []
+    r = requests.get(search_url, params=search_params)
+    results = r.json()['items']
+    for result in results: 
+        curr_data = {
+            'title' : result['snippet']['title'],
+            'id' : result['id']['videoId'],
+            'thumbnail' : result['snippet']['thumbnails']['medium']['url']
+        }
+        all_data.append(curr_data)
+    return render(request, "result.html", {"query":query, "data": all_data})
