@@ -7,6 +7,7 @@ def search(request):
 
 def result(request):
     if "query" not in request.POST:
+        print("no query no action")
         return render(request, "result.html", {"query":"N/A", "data": []})
         
     query = request.POST["query"]
@@ -29,4 +30,18 @@ def result(request):
             'thumbnail' : result['snippet']['thumbnails']['medium']['url']
         }
         all_data.append(curr_data)
+    if "download" in request.POST:
+        print("detected download")
+        url = request.POST["download"]
+        download(url)
+        print("download finished")
+        # return render(request, "result.html", {"query":"N/A", "data": []})
     return render(request, "result.html", {"query":query, "data": all_data})
+
+
+from pytube import YouTube
+
+def download(url):
+    yt = YouTube(url)
+    video = yt.streams.first()
+    video.download("/Users/qingyuanpeng/Desktop")

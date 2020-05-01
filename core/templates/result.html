@@ -30,9 +30,12 @@
     </div>
     <div class="col mx-auto"> 
       <h5 class="card-title mt-3">{{video.title}}</h5><a href={{video.url}}>View</a>
-      <br>
-      <h6></h6>
-      <a href="#" class="btn btn-danger btn-bottom">Download</a>
+      <form class = "form-group" method="POST" action="/result/">
+      {% csrf_token %}
+      <input class="invisible" name="download" value={{video.url}}>
+      <input class="invisible" name="query" value="{{query}}">
+      <button href="#" type="submit" class="btn btn-danger btn-bottom">Download</button>
+      </form>
     </div>
   </div>
 </div>
