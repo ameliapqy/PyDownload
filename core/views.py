@@ -25,7 +25,7 @@ def result(request):
     for result in results: 
         curr_data = {
             'title' : result['snippet']['title'],
-            'id' : result['id']['videoId'],
+            'url' : 'https://www.youtube.com/watch?v=' + result["id"]["videoId"],
             'thumbnail' : result['snippet']['thumbnails']['medium']['url']
         }
         all_data.append(curr_data)
