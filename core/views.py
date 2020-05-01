@@ -16,7 +16,7 @@ def result(request):
         'part': 'snippet',
         'q': query,
         'key': settings.YOUTUBE_API_KEY,
-        'maxResults' : 9,
+        'maxResults' : 10,
         'type': 'video'
     }
     all_data = []
