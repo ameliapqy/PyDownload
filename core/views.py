@@ -4,6 +4,7 @@ import json, requests
 from pytube import YouTube
 import os, shutil
 from core.models import Video
+from django.views.static import serve 
 #return the main search page
 def search(request):
     return render(request, "search.html", {"query":""})
@@ -29,29 +30,27 @@ def result(request):
     r = requests.get(search_url, params=search_params)
     results = r.json()['items']
     for result in results: 
-        # curr_data = {
-        #     'title' : result['snippet']['title'],
-        #     'url' : 'https://www.youtube.com/watch?v=' + result["id"]["videoId"],
-        #     'thumbnail' : result['snippet']['thumbnails']['medium']['url']
-        # }
         title  = result['snippet']['title']
         url = 'https://www.youtube.com/watch?v=' + result["id"]["videoId"]
         thumbnail = result['snippet']['thumbnails']['medium']['url']
         video = Video.objects.create(title=title, url = url, thumbnail = thumbnail)
         videos.append(video)
     if "download" in request.POST:
-        print("detected download")
+        print("detected download ")
         url = request.POST["download"]
-        download(url)
+        download(url, request)
         print("download finished")
         # return render(request, "result.html", {"query":"N/A", "data": []})
     return render(request, "result.html", {"query":query, "data": videos})
 
 #helper method to download youtube video
-def download(url):
+def download(url, request):
     yt = YouTube(url)
     video = yt.streams.first()
     video.download("downloads")
+    # filepath = os.path.join("downloads",video.title+".mp4") 
+    # return serve(request, os.path.basename(filepath),os.path.dirname(filepath))
+
 
 def empty_folder():
     for root, dirs, files in os.walk("downloads"):
